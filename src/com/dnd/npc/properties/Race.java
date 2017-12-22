@@ -8,20 +8,23 @@ public class Race {
 
 	public static final String[][] raceList = initList();
 	
-	private String race;
+	private int race;
 	
 	public Race() {
 		this.race = randomRace();
 	}
 		
 	public String getRace() {
+		return raceList[race][0];
+	}
+	
+	public int getRaceIndex() {
 		return race;
 	}
 
-	private String randomRace() {
+	private int randomRace() {
 		Random r =  new Random();
-		int n =  r.nextInt(3);
-		return raceList[n][0];
+		return r.nextInt(3);
 	}
 	
 	private static String[][] initList() {
