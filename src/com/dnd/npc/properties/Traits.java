@@ -2,14 +2,14 @@ package com.dnd.npc.properties;
 
 public class Traits {
 
-	private int[] Attributes;
+	private int[] attributes;
 	
 	public Traits() {
 		setAttributes();
 	}
 	
 	private void setAttributes() {
-		Attributes =  new int[6];
+		attributes =  new int[6];
 		/*
 		 * 1 - Strength
 		 * 2 - Dexterity
@@ -18,14 +18,21 @@ public class Traits {
 		 * 5 - Wisdom
 		 * 6 - Charisma
 		 */
-		for (int i = 0; i < Attributes.length; i++) {
-			Attributes[i] = 8;
+		for (int i = 0; i < attributes.length; i++) {
+			attributes[i] = 8;
 		}
 	}
 	
 	private int toModifier(int val) {
 		int mod = (int) (0.5*val - 5.3);
 		return mod;
+	}
+	
+	public void applyRaceEffects(NewRace race) {
+		int[] attributeBooster = race.getAttributeBooster();
+		for (int i = 0; i < attributeBooster.length; i++) {
+			attributes[i] += attributeBooster[i];
+		}
 	}
 	
 	public int getModifier(String mod) {
@@ -47,27 +54,27 @@ public class Traits {
 	}
 	
 	public int strength() {
-		return Attributes[0];
+		return attributes[0];
 	}
 	
 	public int dexterity() {
-		return Attributes[1];
+		return attributes[1];
 	}
 	
 	public int constitution() {
-		return Attributes[2];
+		return attributes[2];
 	}
 	
 	public int intelligence() {
-		return Attributes[3];
+		return attributes[3];
 	}
 	
 	public int wisdom() {
-		return Attributes[4];
+		return attributes[4];
 	}
 	
 	public int charisma() {
-		return Attributes[5];
+		return attributes[5];
 	}
 	
 }
