@@ -1,14 +1,13 @@
 package com.dnd.main;
 
-import com.dnd.npc.properties.Gender;
-import com.dnd.npc.properties.Race;
+import com.dnd.npc.properties.Traits;
 
 public class NPC {
 
-	private int[] Attributes;
+	private Traits traits;
 	
 	public NPC() {
-		
+		traits = new Traits();
 	}
 	
 }
