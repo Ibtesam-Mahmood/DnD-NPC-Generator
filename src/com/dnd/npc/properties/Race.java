@@ -23,7 +23,6 @@ public class Race {
 			attributeBooster[i] = Integer.parseInt(boosts[i]);
 		}
 		raceName = reader.getFileName();
-		System.out.println(raceName);
 	}
 
 	public int[] getAttributeBooster() {
