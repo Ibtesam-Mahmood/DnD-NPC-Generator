@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Iterator;
 
 import org.json.simple.JSONArray;
@@ -36,21 +37,26 @@ public class ReadJSON {
 	}
 	
 
-	public void read() {
+	public void readArray() {
+		
+		String[] property;
 		
 		JSONParser parser = new JSONParser();
 		
 		try {
 			
 			JSONObject jObj =  (JSONObject) parser.parse(new FileReader(file));
-			String property =  (String) jObj.get("PROPERTY");
 			
-			JSONArray jArray = (JSONArray) jObj.get("LIST PROPERTY");
-			Iterator<String> iterator = jArray.iterator();
+			JSONArray jArray = (JSONArray) jObj.get("attributes");
 			
-			while(iterator.hasNext()) {
-				//do something with the array
+			property = new String[jArray.size()];
+			
+			for (int i = 0; i < property.length; i++) {
+				property[i] =  (String) jArray.get(i);
 			}
+			
+			
+			System.out.println(Arrays.toString(property));
 			
 		}
 		catch (FileNotFoundException e) { e.printStackTrace(); }
