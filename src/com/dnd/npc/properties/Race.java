@@ -1,5 +1,7 @@
 package com.dnd.npc.properties;
 
+import java.io.File;
+
 import com.dnd.reader.ReadJSON;
 
 public class Race {
@@ -13,7 +15,8 @@ public class Race {
 	//Instantiates the attributeBooster array
 	private void setAttributeBooster() {
 		attributeBooster =  new int[6];
-		ReadJSON reader =  new ReadJSON("C:\\Users\\ibtes\\Documents\\WorkSpaces\\DnD WorkSpace\\DnD v1\\resources\\JSON\\Human.JSON");
+		File file = ReadJSON.randomFile("C:\\Users\\ibtes\\Documents\\WorkSpaces\\DnD WorkSpace\\DnD v1\\resources\\JSON");
+		ReadJSON reader =  new ReadJSON( file );
 		String[] boosts = reader.readArray("attributes");
 		for (int i = 0; i < attributeBooster.length; i++) {
 			attributeBooster[i] = Integer.parseInt(boosts[i]);
