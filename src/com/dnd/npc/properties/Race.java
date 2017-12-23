@@ -15,7 +15,7 @@ public class Race {
 		attributeBooster[4] = -3;
 		attributeBooster[5] = 2;
 		ReadJSON reader =  new ReadJSON("C:\\Users\\ibtes\\Documents\\WorkSpaces\\DnD WorkSpace\\DnD v1\\resources\\JSON\\Human.JSON");
-		reader.readArray();
+		reader.readArray("attributes");
 	}
 
 	public int[] getAttributeBooster() {

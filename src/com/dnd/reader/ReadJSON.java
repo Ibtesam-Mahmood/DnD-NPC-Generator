@@ -37,32 +37,31 @@ public class ReadJSON {
 	}
 	
 
-	public void readArray() {
+	public String[] readArray(String key) {
 		
-		String[] property;
+		String[] array;
 		
 		JSONParser parser = new JSONParser();
+		
+		JSONArray jArray;
 		
 		try {
 			
 			JSONObject jObj =  (JSONObject) parser.parse(new FileReader(file));
+			jArray = (JSONArray) jObj.get(key);
+
+			array = new String[jArray.size()];
 			
-			JSONArray jArray = (JSONArray) jObj.get("attributes");
-			
-			property = new String[jArray.size()];
-			
-			for (int i = 0; i < property.length; i++) {
-				property[i] =  (String) jArray.get(i);
+			for (int i = 0; i < array.length; i++) {
+				array[i] =  (String) jArray.get(i);
 			}
 			
-			
-			System.out.println(Arrays.toString(property));
-			
 		}
-		catch (FileNotFoundException e) { e.printStackTrace(); }
-		catch (IOException e) { e.printStackTrace(); }
-		//catch (ParseException e) { e.printStackTrace(); }
-		catch (Exception e) { e.printStackTrace(); }
+		catch (FileNotFoundException e) { e.printStackTrace(); return null; }
+		catch (IOException e) { e.printStackTrace(); return null;}
+		catch (Exception e) { e.printStackTrace(); return null;}
+	
+		return array;
 
 	}
 	
