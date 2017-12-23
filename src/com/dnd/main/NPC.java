@@ -1,10 +1,5 @@
 package com.dnd.main;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Random;
-import java.util.Scanner;
-
 import com.dnd.npc.properties.Gender;
 import com.dnd.npc.properties.PlayerClass;
 import com.dnd.npc.properties.Race;
@@ -19,6 +14,7 @@ public class NPC {
 	private PlayerClass npcClass; //the class of the npc
 	private String name; //The NPCs name
 	private int age; //The NPCs age
+	private int gold;
 	
 	public NPC() {
 		traits = new Traits();
@@ -29,6 +25,7 @@ public class NPC {
 		generateAge();
 		npcClass =  new PlayerClass(age);
 		traits.applyAttributeEffects(npcClass);
+		randomGold();
 	}
 
 
@@ -41,6 +38,7 @@ public class NPC {
 		des += "Age: " + age + "\n";
 		des += "Race: " + race.getName() + "\n";
 		des += "Class: " + npcClass.getName() + "\n";
+		des += "Gold: " + gold + " gp\n";
 		des += "\n";
 		des += "Str: " + traits.strength() + ", ";
 		des += "Dex: " + traits.dexterity() + ", ";
@@ -64,6 +62,10 @@ public class NPC {
 		
 		this.name = reader.randomLine();
 		
+	}
+	
+	private void randomGold() {
+		gold = (int) (npcClass.getGold() * (Math.random() + 0.5));
 	}
 	
 	

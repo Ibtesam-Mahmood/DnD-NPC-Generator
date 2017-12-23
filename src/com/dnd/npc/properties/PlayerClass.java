@@ -4,6 +4,8 @@ import com.dnd.reader.ReadJSON;
 
 public class PlayerClass extends PlayerAttribute{
 	
+	private int gold;
+	
 	public PlayerClass(int age) {
 		initFromJSON(age);
 	}
@@ -25,10 +27,15 @@ public class PlayerClass extends PlayerAttribute{
 			maxAge = Integer.parseInt( reader.readValue("maxAge") );
 		}
 		
+		this.gold = Integer.parseInt( reader.readValue("gold") );
+		
 		return null;
 		
 	}
 
+	public int getGold() {
+		return gold;
+	}
 		
 	
 }
