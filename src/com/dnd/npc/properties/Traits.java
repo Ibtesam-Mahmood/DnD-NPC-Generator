@@ -2,15 +2,19 @@ package com.dnd.npc.properties;
 
 public class Traits {
 
-	private int[] attributes;
+	// A class that holds are numerical traits of the NPC
+	
+	private int[] attributes; //The basic attributes of the character, range from 1-30
 	
 	public Traits() {
 		setAttributes();
 	}
 	
+	
+	//Sets the basic attributes values for this trait
 	private void setAttributes() {
 		attributes =  new int[6];
-		/*
+		/* List of indexes to attribute
 		 * 1 - Strength
 		 * 2 - Dexterity
 		 * 3 - Constitution
@@ -23,18 +27,24 @@ public class Traits {
 		}
 	}
 	
-	private int toModifier(int val) {
-		int mod = (int) (0.5*val - 5.3);
+	//Converts an attribute score to a modifier
+	//@param val - the value that is converted into a modifier
+	public static int toModifier(int val) {
+		int mod = (int) (0.5*val - 5.3); //uses a function to get approximate modifier value
 		return mod;
 	}
 	
-	public void applyRaceEffects(NewRace race) {
+	//applies the effects of race onto the traits
+	//@param race - the race which effects this trait
+	public void applyRaceEffects(Race race) {
 		int[] attributeBooster = race.getAttributeBooster();
 		for (int i = 0; i < attributeBooster.length; i++) {
 			attributes[i] += attributeBooster[i];
 		}
 	}
 	
+	//Calls the toModifier method for a specific attribute
+	//@param mod - the attribute to get the modifier for
 	public int getModifier(String mod) {
 		mod.toLowerCase();
 		if(mod == "str")

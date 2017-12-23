@@ -1,5 +1,6 @@
 package com.dnd.reader;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -13,17 +14,25 @@ import jxl.Sheet;
 
 public class ReadJSON {
 
+	//Reads a JSON file
 	
-	private String inputFile;
-	private Sheet sheet;
+	private File file;
 	
 	public ReadJSON(String inputFile) {
 		setFileTo(inputFile);
 	}
 	
+	public ReadJSON(File file) {
+		setFileTo(file);
+	}
+	
 	//Sets the file to the given directory
-	public void setFileTo(String inputFile) {
-		this.inputFile =  inputFile;
+	public void setFileTo(String dir) {
+		file = new File(dir);
+	}
+	
+	public void setFileTo(File file) {
+		this.file = file;
 	}
 	
 
@@ -33,7 +42,7 @@ public class ReadJSON {
 		
 		try {
 			
-			JSONObject jObj =  (JSONObject) parser.parse(new FileReader(inputFile));
+			JSONObject jObj =  (JSONObject) parser.parse(new FileReader(file));
 			String property =  (String) jObj.get("PROPERTY");
 			
 			JSONArray jArray = (JSONArray) jObj.get("LIST PROPERTY");

@@ -1,22 +1,24 @@
 package com.dnd.main;
 
 import com.dnd.npc.properties.Gender;
-import com.dnd.npc.properties.NewRace;
+import com.dnd.npc.properties.Race;
 import com.dnd.npc.properties.Traits;
 
 public class NPC {
 
-	private Traits traits;
+	private Traits traits; //hold the attributes and skills of the NPC
 	private Gender gender;
-	private NewRace race;
+	private Race race; //The race of the NPC
 	
 	public NPC() {
 		traits = new Traits();
 		gender =  Gender.randomGender();
-		race =  new NewRace();
+		race =  new Race();
 		traits.applyRaceEffects(race);
 	}
 	
+	
+	//Returns a string with a list of the NPC's attributes
 	public String npcDescription() {
 		String des = "";
 		

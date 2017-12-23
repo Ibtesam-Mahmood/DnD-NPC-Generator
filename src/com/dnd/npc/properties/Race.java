@@ -1,35 +1,22 @@
 package com.dnd.npc.properties;
 
-import java.util.Random;
-
-import com.dnd.reader.ReadExcel;
-
 public class Race {
 
-	public static final String[][] raceList = initList();
-	
-	private int race;
+	private int[] attributeBooster; //The attributes that are effected by race
 	
 	public Race() {
-		this.race = randomRace();
-	}
-		
-	public String getRace() {
-		return raceList[race][0];
-	}
-	
-	public int getRaceIndex() {
-		return race;
+		attributeBooster =  new int[6];
+		attributeBooster[0] = 1;
+		attributeBooster[1] = 3;
+		attributeBooster[2] = -5;
+		attributeBooster[3] = 0;
+		attributeBooster[4] = -3;
+		attributeBooster[5] = 2;
 	}
 
-	private int randomRace() {
-		Random r =  new Random();
-		return r.nextInt(3);
+	public int[] getAttributeBooster() {
+		return attributeBooster;
 	}
-	
-	private static String[][] initList() {
-		ReadExcel reader =  new ReadExcel("C:\\Users\\ibtes\\Documents\\WorkSpaces\\DnD WorkSpace\\DnD v1\\excel\\Race.xls");
-		return reader.read();
-	}
+		
 	
 }
