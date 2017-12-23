@@ -16,6 +16,7 @@ public class NPC {
 	private String name; //The NPCs name
 	private int age; //The NPCs age
 	private Wallet wallet;
+	private String allignment;
 	
 	public NPC() {
 		traits = new Traits();
@@ -27,6 +28,7 @@ public class NPC {
 		npcClass =  new PlayerClass(age);
 		traits.applyAttributeEffects(npcClass);
 		randomGold();
+		randomAllignment();
 	}
 
 
@@ -40,6 +42,8 @@ public class NPC {
 		des += "Race: " + race.getName() + "\n";
 		des += "Class: " + npcClass.getName() + "\n";
 		des += "Gold: " + wallet.coins() + "\n";
+		des += "\n";
+		des += "Allignment: " + allignment + "\n";
 		des += "\n";
 		des += "Str: " + traits.strength() + ", ";
 		des += "Dex: " + traits.dexterity() + ", ";
@@ -68,6 +72,14 @@ public class NPC {
 	private void randomGold() {
 		float gold = (float) (npcClass.getGold() * (Math.random() + 0.5));
 		this.wallet =  new Wallet(gold);
+	}
+	
+	private void randomAllignment() {
+		String dir = "C:\\Users\\ibtes\\Documents\\WorkSpaces\\DnD WorkSpace\\DnD v1\\resources\\Allignments.txt"; //Change this later to relative directory
+		
+		ReadTextFile reader =  new ReadTextFile(dir);
+		
+		this.allignment = reader.randomLine();
 	}
 	
 	
