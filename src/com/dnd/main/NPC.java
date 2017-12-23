@@ -4,6 +4,7 @@ import com.dnd.npc.properties.Gender;
 import com.dnd.npc.properties.PlayerClass;
 import com.dnd.npc.properties.Race;
 import com.dnd.npc.properties.Traits;
+import com.dnd.npc.properties.Wallet;
 import com.dnd.reader.ReadTextFile;
 
 public class NPC {
@@ -14,7 +15,7 @@ public class NPC {
 	private PlayerClass npcClass; //the class of the npc
 	private String name; //The NPCs name
 	private int age; //The NPCs age
-	private int gold;
+	private Wallet wallet;
 	
 	public NPC() {
 		traits = new Traits();
@@ -38,7 +39,7 @@ public class NPC {
 		des += "Age: " + age + "\n";
 		des += "Race: " + race.getName() + "\n";
 		des += "Class: " + npcClass.getName() + "\n";
-		des += "Gold: " + gold + " gp\n";
+		des += "Gold: " + wallet.coins() + "\n";
 		des += "\n";
 		des += "Str: " + traits.strength() + ", ";
 		des += "Dex: " + traits.dexterity() + ", ";
@@ -63,9 +64,10 @@ public class NPC {
 		this.name = reader.randomLine();
 		
 	}
-	
+
 	private void randomGold() {
-		gold = (int) (npcClass.getGold() * (Math.random() + 0.5));
+		float gold = (float) (npcClass.getGold() * (Math.random() + 0.5));
+		this.wallet =  new Wallet(gold);
 	}
 	
 	
