@@ -1,5 +1,10 @@
 package com.dnd.main;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Random;
+import java.util.Scanner;
+
 import com.dnd.npc.properties.Gender;
 import com.dnd.npc.properties.Race;
 import com.dnd.npc.properties.Traits;
@@ -9,19 +14,22 @@ public class NPC {
 	private Traits traits; //hold the attributes and skills of the NPC
 	private Gender gender;
 	private Race race; //The race of the NPC
+	private String name; //The NPCs name
 	
 	public NPC() {
 		traits = new Traits();
 		gender =  Gender.randomGender();
 		race =  new Race();
 		traits.applyRaceEffects(race);
+		generateRandomName();
 	}
-	
-	
+
+
 	//Returns a string with a list of the NPC's attributes
 	public String npcDescription() {
 		String des = "";
 		
+		des += "Name: " + name + "\n";
 		des += "Gender: " + gender + "\n";
 		des += "Race: " + race.getRaceName() + "\n";
 		des += "Str: " + traits.strength() + ", ";
@@ -33,5 +41,28 @@ public class NPC {
 		
 		return des;
 	}
+	
+	private void generateRandomName() {
+		String dir = "C:\\Users\\ibtes\\Documents\\WorkSpaces\\DnD WorkSpace\\DnD v1\\resources\\names"; //Change this later to relative directory
+		dir += "\\" + race.getRaceName() + " " + gender + ".txt";
+		File f =  new File(dir);
+
+	    Random rand = new Random();
+	    int n = 0;
+	    
+	    try(Scanner sc = new Scanner(f)){
+	    	
+		    while(sc.hasNext() )
+		    {
+		       ++n;
+		       String line = sc.nextLine();
+		       if(rand.nextInt(n) == 0)
+		          this.name = line;  
+		    }
+	    } catch (FileNotFoundException e) { e.printStackTrace(); }
+
+		
+	}
+	
 	
 }
