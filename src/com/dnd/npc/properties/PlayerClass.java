@@ -13,7 +13,7 @@ public class PlayerClass extends PlayerAttribute{
 		
 		ReadJSON reader = super.initFromJSON("Class");
 		
-		
+		//Do something special
 		
 		return null;
 		

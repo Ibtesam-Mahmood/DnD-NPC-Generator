@@ -9,6 +9,7 @@ import com.dnd.npc.properties.Gender;
 import com.dnd.npc.properties.PlayerClass;
 import com.dnd.npc.properties.Race;
 import com.dnd.npc.properties.Traits;
+import com.dnd.reader.ReadTextFile;
 
 public class NPC {
 
@@ -58,22 +59,10 @@ public class NPC {
 	private void generateName() {
 		String dir = "C:\\Users\\ibtes\\Documents\\WorkSpaces\\DnD WorkSpace\\DnD v1\\resources\\names"; //Change this later to relative directory
 		dir += "\\" + race.getName() + " " + gender + ".txt";
-		File f =  new File(dir);
-
-	    Random rand = new Random();
-	    int n = 0;
-	    
-	    try(Scanner sc = new Scanner(f)){
-	    	
-		    while(sc.hasNext() )
-		    {
-		       ++n;
-		       String line = sc.nextLine();
-		       if(rand.nextInt(n) == 0)
-		          this.name = line;  
-		    }
-	    } catch (FileNotFoundException e) { e.printStackTrace(); }
-
+		
+		ReadTextFile reader =  new ReadTextFile(dir);
+		
+		this.name = reader.randomLine();
 		
 	}
 	
