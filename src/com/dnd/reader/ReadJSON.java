@@ -72,8 +72,9 @@ public class ReadJSON {
 
 	}
 	
-	
-
+	public String getFileName() {
+		return file.getName().substring(0, file.getName().indexOf("."));
+	}
 	
 	
 }

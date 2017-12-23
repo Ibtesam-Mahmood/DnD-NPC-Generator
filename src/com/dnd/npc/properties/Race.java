@@ -7,6 +7,7 @@ import com.dnd.reader.ReadJSON;
 public class Race {
 
 	private int[] attributeBooster; //The attributes that are effected by race
+	private String raceName;
 	
 	public Race() {
 		setAttributeBooster();
@@ -21,11 +22,16 @@ public class Race {
 		for (int i = 0; i < attributeBooster.length; i++) {
 			attributeBooster[i] = Integer.parseInt(boosts[i]);
 		}
-		
+		raceName = reader.getFileName();
+		System.out.println(raceName);
 	}
 
 	public int[] getAttributeBooster() {
 		return attributeBooster;
+	}
+	
+	public String getRaceName() {
+		return raceName;
 	}
 		
 	

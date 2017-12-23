@@ -23,6 +23,7 @@ public class NPC {
 		String des = "";
 		
 		des += "Gender: " + gender + "\n";
+		des += "Race: " + race.getRaceName() + "\n";
 		des += "Str: " + traits.strength() + ", ";
 		des += "Dex: " + traits.dexterity() + ", ";
 		des += "Con: " + traits.constitution() + "\n";
