@@ -36,8 +36,8 @@ public class Traits {
 	
 	//applies the effects of race onto the traits
 	//@param race - the race which effects this trait
-	public void applyRaceEffects(Race race) {
-		int[] attributeBooster = race.getAttributeBooster();
+	public void applyAttributeEffects(PlayerAttribute attribute) {
+		int[] attributeBooster = attribute.getAttributeBooster();
 		for (int i = 0; i < attributeBooster.length; i++) {
 			attributes[i] += attributeBooster[i];
 		}
