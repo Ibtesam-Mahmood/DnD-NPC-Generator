@@ -13,7 +13,17 @@ public class PlayerClass extends PlayerAttribute{
 		
 		ReadJSON reader = super.initFromJSON("Class");
 		
-		//Do something special
+		int minAge = Integer.parseInt( reader.readValue("minAge") );
+		int maxAge = Integer.parseInt( reader.readValue("maxAge") );
+		
+		while(age < minAge || age > maxAge ) {
+			
+			reader = super.initFromJSON("Class");
+			
+			minAge = Integer.parseInt( reader.readValue("minAge") );
+			
+			maxAge = Integer.parseInt( reader.readValue("maxAge") );
+		}
 		
 		return null;
 		
