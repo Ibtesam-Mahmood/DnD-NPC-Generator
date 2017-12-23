@@ -15,13 +15,15 @@ public class NPC {
 	private Gender gender;
 	private Race race; //The race of the NPC
 	private String name; //The NPCs name
+	private int age; //The NPCs age
 	
 	public NPC() {
 		traits = new Traits();
 		gender =  Gender.randomGender();
 		race =  new Race();
 		traits.applyRaceEffects(race);
-		generateRandomName();
+		generateName();
+		generateAge();
 	}
 
 
@@ -31,6 +33,7 @@ public class NPC {
 		
 		des += "Name: " + name + "\n";
 		des += "Gender: " + gender + "\n";
+		des += "Age: " + age + "\n";
 		des += "Race: " + race.getRaceName() + "\n";
 		des += "Str: " + traits.strength() + ", ";
 		des += "Dex: " + traits.dexterity() + ", ";
@@ -42,7 +45,11 @@ public class NPC {
 		return des;
 	}
 	
-	private void generateRandomName() {
+	private void generateAge() {
+		age = (int) (race.getAge() * (Math.random() + 0.1));
+	}
+	
+	private void generateName() {
 		String dir = "C:\\Users\\ibtes\\Documents\\WorkSpaces\\DnD WorkSpace\\DnD v1\\resources\\names"; //Change this later to relative directory
 		dir += "\\" + race.getRaceName() + " " + gender + ".txt";
 		File f =  new File(dir);

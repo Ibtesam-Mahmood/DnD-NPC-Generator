@@ -72,6 +72,27 @@ public class ReadJSON {
 
 	}
 	
+	public String readValue(String key) {
+		
+		String val;
+		
+		JSONParser parser = new JSONParser();
+		
+		try {
+			
+			JSONObject jObj =  (JSONObject) parser.parse(new FileReader(file));
+			val = (String) jObj.get(key);
+
+			
+		}
+		catch (FileNotFoundException e) { e.printStackTrace(); return null; }
+		catch (IOException e) { e.printStackTrace(); return null;}
+		catch (Exception e) { e.printStackTrace(); return null;}
+	
+		return val;
+
+	}
+	
 	public String getFileName() {
 		return file.getName().substring(0, file.getName().indexOf("."));
 	}
