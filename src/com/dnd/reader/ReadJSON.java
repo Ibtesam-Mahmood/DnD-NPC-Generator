@@ -4,14 +4,10 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.Iterator;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-
-import jxl.Sheet;
 
 public class ReadJSON {
 
@@ -37,6 +33,8 @@ public class ReadJSON {
 	}
 	
 
+	//Parses a simple JSON file with a single array into a string array
+	//@param key - the array index within the JSON
 	public String[] readArray(String key) {
 		
 		String[] array;

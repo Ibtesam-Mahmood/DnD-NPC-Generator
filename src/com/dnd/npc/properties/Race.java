@@ -7,15 +7,18 @@ public class Race {
 	private int[] attributeBooster; //The attributes that are effected by race
 	
 	public Race() {
+		setAttributeBooster();
+	}
+	
+	//Instantiates the attributeBooster array
+	private void setAttributeBooster() {
 		attributeBooster =  new int[6];
-		attributeBooster[0] = 1;
-		attributeBooster[1] = 3;
-		attributeBooster[2] = -5;
-		attributeBooster[3] = 0;
-		attributeBooster[4] = -3;
-		attributeBooster[5] = 2;
 		ReadJSON reader =  new ReadJSON("C:\\Users\\ibtes\\Documents\\WorkSpaces\\DnD WorkSpace\\DnD v1\\resources\\JSON\\Human.JSON");
-		reader.readArray("attributes");
+		String[] boosts = reader.readArray("attributes");
+		for (int i = 0; i < attributeBooster.length; i++) {
+			attributeBooster[i] = Integer.parseInt(boosts[i]);
+		}
+		
 	}
 
 	public int[] getAttributeBooster() {
