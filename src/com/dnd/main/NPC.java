@@ -1,6 +1,8 @@
 package com.dnd.main;
 
 import com.dnd.npc.properties.Gender;
+import com.dnd.npc.properties.Inventory;
+import com.dnd.npc.properties.Item;
 import com.dnd.npc.properties.PlayerClass;
 import com.dnd.npc.properties.Race;
 import com.dnd.npc.properties.Traits;
@@ -17,6 +19,7 @@ public class NPC {
 	private int age; //The NPCs age
 	private Wallet wallet;
 	private String allignment;
+	private Inventory inventory;
 	
 	public NPC() {
 		traits = new Traits();
@@ -29,6 +32,7 @@ public class NPC {
 		traits.applyAttributeEffects(npcClass);
 		randomGold();
 		randomAllignment();
+		inventory = new Inventory();
 	}
 
 
@@ -44,6 +48,7 @@ public class NPC {
 		des += "Gold: " + wallet.coins() + "\n";
 		des += "\n";
 		des += "Allignment: " + allignment + "\n";
+		des += "Inventory: \n" + inventory.printInventory() + "\n";
 		des += "\n";
 		des += "Str: " + traits.strength() + ", ";
 		des += "Dex: " + traits.dexterity() + ", ";
