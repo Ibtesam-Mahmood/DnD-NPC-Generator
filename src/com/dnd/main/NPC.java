@@ -65,12 +65,14 @@ public class NPC {
 	}
 	
 	private void generateName() {
-		String dir = "C:\\Users\\ibtes\\Documents\\WorkSpaces\\DnD WorkSpace\\DnD v1\\resources\\names"; //Change this later to relative directory
-		dir += "\\" + race.getName() + " " + gender + ".txt";
+		String dir = "resources\\names\\" + race.getName() + " " + gender + ".txt";
 		
-		ReadTextFile reader =  new ReadTextFile(dir);
+		ReadTextFile reader =  new ReadTextFile(dir);	
+		
+		reader =  new ReadTextFile(dir);
 		
 		this.name = reader.randomLine();
+		//this.name = "";
 		
 	}
 
@@ -80,7 +82,7 @@ public class NPC {
 	}
 	
 	private void randomAllignment() {
-		String dir = "C:\\Users\\ibtes\\Documents\\WorkSpaces\\DnD WorkSpace\\DnD v1\\resources\\Allignments.txt"; //Change this later to relative directory
+		String dir = "resources\\Allignments.txt"; //Change this later to relative directory
 		
 		ReadTextFile reader =  new ReadTextFile(dir);
 		

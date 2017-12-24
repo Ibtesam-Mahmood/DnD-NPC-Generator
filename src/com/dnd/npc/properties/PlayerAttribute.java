@@ -15,7 +15,7 @@ public abstract class PlayerAttribute {
 	
 	protected ReadJSON initFromJSON(String dir) {
 		attributeBooster =  new int[6];
-		File file = ReadJSON.randomFile("C:\\Users\\ibtes\\Documents\\WorkSpaces\\DnD WorkSpace\\DnD v1\\resources\\JSON\\" + dir);
+		File file = ReadJSON.randomFile("resources\\JSON\\" + dir);
 		ReadJSON reader =  new ReadJSON( file );
 		String[] boosts = reader.readArray("attributes");
 		

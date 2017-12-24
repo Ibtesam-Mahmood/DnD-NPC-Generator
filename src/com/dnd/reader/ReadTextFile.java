@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.LinkOption;
+import java.nio.file.Paths;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -17,17 +19,19 @@ public class ReadTextFile {
 	
 	private File file;
 	
-	public ReadTextFile(String inputFile) {
+	public ReadTextFile(File inputFile) {
 		setFileTo(inputFile);
 	}
 	
-	public ReadTextFile(File file) {
+	public ReadTextFile(String file) {
 		setFileTo(file);
 	}
 	
 	//Sets the file to the given directory
-	public void setFileTo(String dir) {
-		file = new File(dir);
+	public void setFileTo(String file) {
+		String path = Paths.get(file).toAbsolutePath().toString();
+		
+		this.file = new File(path);
 	}
 	
 	public void setFileTo(File file) {
@@ -50,6 +54,7 @@ public class ReadTextFile {
 		
 	    Random rand = new Random();
 	    int n = 0;
+	    
 	    
 	    try(Scanner sc = new Scanner(file)){
 	    	

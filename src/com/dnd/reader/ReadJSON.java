@@ -4,6 +4,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.LinkOption;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Random;
 
 import org.json.simple.JSONArray;
@@ -16,17 +19,20 @@ public class ReadJSON {
 	
 	private File file;
 	
-	public ReadJSON(String inputFile) {
-		setFileTo(inputFile);
-	}
-	
+
 	public ReadJSON(File file) {
 		setFileTo(file);
 	}
 	
+	public ReadJSON(String file) {
+		setFileTo(file);
+	}
+	
 	//Sets the file to the given directory
-	public void setFileTo(String dir) {
-		file = new File(dir);
+	public void setFileTo(String file) {
+		String path = Paths.get(file).toAbsolutePath().toString();
+		
+		this.file = new File(path);
 	}
 	
 	public void setFileTo(File file) {
